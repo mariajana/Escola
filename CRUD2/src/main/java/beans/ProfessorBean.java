@@ -1,5 +1,6 @@
 package beans;
 
+import java.hugo.daw.crud.Professor;
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -8,8 +9,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-
-public class ProfessorBean {
+import services.ProfService;
 
 @ViewScoped
 @Named
@@ -18,7 +18,7 @@ public class ProfessorBean implements Serializable {
 	@Inject
 	private ProfService service;
 
-	protected Professor entidade;
+	protected Professor professor;
 
 	protected Collection<Professor> professores;
 
@@ -37,44 +37,42 @@ public class ProfessorBean implements Serializable {
 	}
 
 	public Professor getEntidade() {
-		return entidade;
+		return professor;
 	}
 
-	public void setEntidade(Usuario entidade) {
-		this.entidade = entidade;
+	public void setEntidade(Professor entidade) {
+		this.professor = entidade;
 	}
 
-	public Collection<Usuario> getEntidades() {
-		return entidades;
+	public Collection<Professor> getEntidades() {
+		return professores;
 	}
 
-	public void setEntidades(Collection<Usuario> entidades) {
-		this.entidades = entidades;
+	public void setEntidades(Collection<Professor> professores) {
+		this.professores = professores;
 	}
 
 	public void save() {
-		getService().save(entidade);
+		getService().save(professor);
 		limpar();
 	}
 
 	public void editar(Long id) {
-		this.getEntidade().setId(id);
+		this.getProfessor().setId(id);
 		save();
 	}
 
 	public void limpar() {
-		entidades = getService().getAll();
-		entidade = newEntidade();
+		professores = getService().getAll();
+		professor = newProfessor();
 	}
 
-	protected Usuario newEntidade() {
-		return new Usuario();
+	protected Professor newProfessor() {
+		return new Professor();
 	}
 
-	public UserService getService() {
+	public ProfService getService() {
 		return service;
 	}
-
-}
 
 }

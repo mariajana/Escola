@@ -4,6 +4,8 @@ import java.hugo.daw.crud.Identificavel;
 import java.io.Serializable;
 import java.util.Collection;
 
+import services.Service;
+
 public abstract class GenericBean <E extends Identificavel> implements Serializable{
 	
 	protected E entidade;
