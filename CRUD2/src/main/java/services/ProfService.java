@@ -10,6 +10,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import dao.ProfessorDAO;
+import util.TransacionalCdi;
 
 @ApplicationScoped
 public class ProfService implements Serializable, Service<Professor> {
@@ -36,7 +37,7 @@ public class ProfService implements Serializable, Service<Professor> {
 		profDAO.save(prof);
 	}
 
-	private String hash(String password) {
+	private String hash (String password) {
 		try {
 			MessageDigest md;
 			md = MessageDigest.getInstance("SHA-256");

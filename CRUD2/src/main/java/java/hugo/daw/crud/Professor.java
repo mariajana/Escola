@@ -14,7 +14,7 @@ public class Professor implements Identificavel{
 	@SequenceGenerator(name = "professor_seq")
 	private Long id;
 	private String nome;
-	
+
 	public Professor() {
 		// TODO Auto-generated constructor stub
 	}

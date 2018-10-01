@@ -1,14 +1,17 @@
 package services;
 
-package services;
-
+import java.hugo.daw.crud.Aluno;
+import java.hugo.daw.crud.Professor;
 import java.io.Serializable;
+import java.security.MessageDigest;
+import java.util.Base64;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import dao.AlunoDAO;
+import util.TransacionalCdi;
 
 @ApplicationScoped
 public class AlunoService implements Serializable, Service<Aluno> {
@@ -19,7 +22,7 @@ public class AlunoService implements Serializable, Service<Aluno> {
 	private static final long serialVersionUID = -7803325791425670859L;
 
 	@Inject
-	private AlunoDAO userDAO;
+	private AlunoDAO alunoDAO;
 
 	/*
 	 * (non-Javadoc)
@@ -30,7 +33,7 @@ public class AlunoService implements Serializable, Service<Aluno> {
 	 */
 	@Override
 	@TransacionalCdi
-	public void save(Professor aluno) {
+	public void save(Aluno aluno) {
 		aluno.setPassword(hash(aluno.getPassword()));
 		alunoDAO.save(aluno);
 	}
