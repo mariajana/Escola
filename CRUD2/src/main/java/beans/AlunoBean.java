@@ -43,6 +43,8 @@ public class AlunoBean implements Serializable {
 
 	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;
+		
+		
 	}
 
 	public Collection<Aluno> getAlunos() {
