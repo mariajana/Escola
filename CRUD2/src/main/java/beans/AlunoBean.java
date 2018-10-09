@@ -15,6 +15,10 @@ import services.ProfService;
 @ViewScoped
 @Named
 public class AlunoBean implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	private Aluno aluno = new Aluno();
+	private Collection<Aluno> alunos;
 
 	@Inject
 	private AlunoService service;
@@ -31,9 +35,16 @@ public class AlunoBean implements Serializable {
 		aluno = newAluno();
 		alunos = getService().getAll();
 	}
+	
+	public void onRowEdit(Aluno obj) {
+		service.update(obj);
+		FacesMessage msg = new FacesMessage("Aluno editado", obj.getNome());
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+		limpar();
+	}
 
-	public void remove(Aluno aluno) {
-		getService().remove(aluno);
+	public void removerAluno(Aluno aluno) {
+		service().remove(aluno);
 		limpar();
 	}
 
@@ -43,8 +54,6 @@ public class AlunoBean implements Serializable {
 
 	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;
-		
-		
 	}
 
 	public Collection<Aluno> getAlunos() {
@@ -56,7 +65,7 @@ public class AlunoBean implements Serializable {
 	}
 
 	public void save() {
-		getService().save(aluno);
+		service().save(aluno);
 		limpar();
 	}
 
@@ -70,12 +79,12 @@ public class AlunoBean implements Serializable {
 		aluno = newAluno();
 	}
 
-	protected Aluno newAluno() {
-		return new Aluno();
-	}
-
-	public ProfService getService() {
+	public AlunoService getService() {
 		return service;
+	}
+	
+	public void setService(AlunoService service) {
+		this.service = service;
 	}
 
 }
