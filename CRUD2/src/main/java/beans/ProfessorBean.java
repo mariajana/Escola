@@ -40,8 +40,8 @@ public class ProfessorBean implements Serializable {
 		return professor;
 	}
 
-	public void setEntidade(Professor entidade) {
-		this.professor = entidade;
+	public void setEntidade(Professor professor) {
+		this.professor = professor;
 	}
 
 	public Collection<Professor> getEntidades() {
