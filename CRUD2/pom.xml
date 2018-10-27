@@ -4,6 +4,7 @@
 	<groupId>CRUD2</groupId>
 	<artifactId>CRUD2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<name>CRUD2</name>
 	<packaging>war</packaging>
 	<build>
 		<plugins>
