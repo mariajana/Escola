@@ -1,7 +1,6 @@
 package services;
 
 import java.hugo.daw.crud.Aluno;
-import java.hugo.daw.crud.Professor;
 import java.io.Serializable;
 import java.security.MessageDigest;
 import java.util.Base64;
